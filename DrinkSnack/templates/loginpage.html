@@ -1,0 +1,46 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/Login.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css.map'%}">
+    <title>Login page</title>
+</head>
+<body style = "background-color: #cbced0;">
+  <h1 style = "text-align: center; color: red;"><b class="text-danger">DrinkSnack</b></h1>
+  <h3 style = "text-align: center; color: black;">A shot break is always needed</h1>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+              <!-- Tabs Titles -->
+              <h2 class="active"> Sign In </h2>
+          
+          
+              <!-- Login Form -->
+              <form action="" method="POST">{% csrf_token %}
+                <input type="text"  class="fadeIn second" name="username" placeholder="username">
+                <input type="password"  class="fadeIn third" name="password" placeholder="password">
+                <button class="btn btn-danger btn-lg btn-block" type="submit" >Login</button>
+                <b style="color: red;">{{loginerror}}</b>
+
+                <a href="{% url 'register' %}"><b class="text-danger">Register</b></a>
+              </form>
+
+              
+          
+            </div>
+          </div>
+</body>
+{% endblock content %}

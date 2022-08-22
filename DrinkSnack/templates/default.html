@@ -1,0 +1,115 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css.map'%}">
+    
+  <title>Home</title>
+</head>
+<body class="secstyle" style = "background-color: #cbced0;">
+    <nav class="navbar navbar-expand-lg bg-light">
+        <a class="btn btn-danger" href="{% url 'default' %}">DrinkSnack</a>
+        <a class="btn btn-danger" href="{% url 'wallet' %}">wallet</a>
+        <div class="container-fluid">
+          <b class="navbar-brand" style="text-align:center;">Home</b>
+        </div>
+        <div class="navbar-brand">
+          <b>user:</b><b class="text-danger">{{store}}</b>
+          <a href="{% url 'login' %}" class="btn btn-danger">Logout</a>
+        </div>
+      </nav>
+
+
+      <form action="" method="POST">{% csrf_token %}
+      <h3>Hi {{store}}, check the below available items and proceed to order</h3>
+
+      <table class="table">
+        <thead >
+            <tr>
+            <th scope="col" style="color: red;">DRINKS</th>
+            </tr>
+          </thead>
+          
+        <thead>
+          <tr>
+            <th scope="col">Items</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" >Coffee</th>
+            <td><input type="number" name="Quantity1" min="0" max="30" style="width: 4em" oninput="validity.valid||(value='');"></td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <th scope="row">Tea</th>
+            <td><input type="number" name="Quantity2" min="0" max="30" style="width: 4em" oninput="validity.valid||(value='');"></td>
+            <td>60</td>
+            
+          </tr>
+          <tr>
+            <th scope="row">Apple-Juice</th>
+            <td><input type="number" name="Quantity3" min="0" max="30" style="width: 4em" oninput="validity.valid||(value='');"></td>
+            <td>100</td>
+            
+          </tr>
+        </tbody>
+      </table>
+
+
+      <table class="table">
+        <thead >
+            <tr>
+            <th scope="col" style="color: red;">SNACKS</th>
+            </tr>
+          </thead>
+          
+        <thead>
+          <tr>
+            <th scope="col">Items</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Lays</th>
+            <td><input type="number" name="Quantity4" min="0" max="30" style="width: 4em" oninput="validity.valid||(value='');"></td>
+            <td>50</td>
+            
+          </tr>
+          <tr>
+            <th scope="row">Bingo</th>
+            <td><input type="number" name="Quantity5" min="0" max="30" style="width: 4em" oninput="validity.valid||(value='');"></td>
+            <td>60</td>
+            
+          </tr>
+          <tr>
+            <th scope="row">Tangles</th>
+            <td><input type="number" name="Quantity6" min="0" max="30" style="width: 4em" oninput="validity.valid||(value='');"></td>
+            <td>100</td>
+           
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-danger btn-lg btn-block" type="submit" >Confirm</button>
+    </form>
+</body>
+{% endblock content %}

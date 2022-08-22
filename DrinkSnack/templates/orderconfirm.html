@@ -1,0 +1,77 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css.map'%}">
+    
+  <title>Order Confirmation</title>
+</head>
+<body class="secstyle" style = "background-color: #cbced0;">
+  <nav class="navbar navbar-expand-lg bg-light">
+      <a class="btn btn-danger" href="{% url 'default' %}">DrinkSnack</a>
+      <a class="btn btn-danger" href="{{request.META.HTTP_REFERER}}">Back</a>
+      <a class="btn btn-danger" href="{% url 'wallet' %}">wallet</a>
+      <div class="container-fluid">
+        <b class="navbar-brand" style="text-align:center;">Order Confirmation</b>
+      </div>
+      <div class="navbar-brand">
+        <b>user:</b><b class="text-danger">{{store}}</b>
+        <a href="{% url 'login' %}" class="btn btn-danger">Logout</a>
+      </div>
+    </nav>
+  <form name='form1' method="POST">{% csrf_token %}
+  <table class = "table">
+
+    <thead >
+            <tr>
+            <th scope="col">Your Order details</th>
+            </tr>
+          </thead>
+          <thead >
+            <tr>
+            <th scope="col">Items</th>
+            <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <td><b style="color:red;">{{msg}}</b></td>
+            {% for key, values in total.items %}
+                <tr>
+                <td>{{key}}</td>
+                <td>{{values}}</td>
+                </tr>
+            {% endfor %}
+
+            <thead >
+              <tr>
+              <th scope="col">Total = {{totalprice}} </th>
+              </tr>
+            </thead>
+
+
+            <thead >
+              <tr>
+              <th scope="col"><input type="number" name="amount1" min="1" max="20000" style="width: 8em" placeholder="Enter amount" oninput="validity.valid||(value='');"> </th>
+              </tr>
+            </thead>
+</table>
+            <th><button class="btn btn-danger" name='btn1' type="submit">Pay</button></th>
+            <th><button class="btn btn-danger" name='btn2' type="submit" >Debit from wallet</button></th>
+            <b style="color:red">{{error}}</b>
+            <b style="color:green">{{text}}</b>
+            <b style="color:green">{{orderplaced}}</b>
+</form>
+</body>
+{% endblock content %}
